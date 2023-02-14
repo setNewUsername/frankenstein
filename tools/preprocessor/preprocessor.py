@@ -244,4 +244,5 @@ if validateCommandsEntered(sys.argv):
                 print(files)
                 for i in range(len(files)):
                     if validateFileName(files[i]):
+                        preprocessedLines = []
                         createmModule(files[i])

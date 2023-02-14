@@ -2,14 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frankenstein_project/interfaces/module_interface.dart';
 
 class Grid extends StatelessWidget with ModuleInterface{
-  final double spaceBetweenColumns = 5;
-  final double spaceBetweenRows = 5;
-  final int columnsAmount = 2;
-
-  final double containerHeight = 0;
-  final double height;
-
-  const Grid({super.key, this.height = 0});
+  const Grid({super.key});
 
   @override
   double getHeight(){
@@ -19,12 +12,12 @@ class Grid extends StatelessWidget with ModuleInterface{
   @override 
   Widget build(BuildContext context){
     return SizedBox(
-      height: containerHeight == 0 ? height : containerHeight,
+      height: 0/*<container_height>*/,
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisSpacing: spaceBetweenColumns,
-          crossAxisSpacing: spaceBetweenRows,
-          crossAxisCount: columnsAmount
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          mainAxisSpacing: 5/*<space_petween_columns>*/,
+          crossAxisSpacing: 5/*<space_petween_rows>*/,
+          crossAxisCount: 2/*<columns_amount>*/
         ), 
         itemBuilder: ((context, index) {
           return Container(color: Colors.green);

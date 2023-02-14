@@ -25,7 +25,7 @@ class LayoutHandler extends StatefulWidget{
 class LayoutHandlerState extends State<LayoutHandler>{
 
   Header header = const Header();
-  late Grid grid;
+  Grid grid = const Grid();
   Footer footer = const Footer();
 
   double headerHeight = 0;
@@ -47,7 +47,6 @@ class LayoutHandlerState extends State<LayoutHandler>{
   //TODO: add after initState callback
   @override
   Widget build(BuildContext context){
-    grid = Grid(height: MediaQuery.of(context).size.height - headerHeight - footerHeight);
     return Column(
       children: [
         header,

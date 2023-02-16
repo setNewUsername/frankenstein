@@ -67,7 +67,7 @@ def createDefParamsFileName(dirToSave:str, filename:str) -> str:
     return result
 
 def createModuleDir(parentDir, modulename) -> None:
-    fullPath = parentDir + "/" + modulename
+    fullPath = parentDir + "\\" + modulename
     print(fullPath)
     try:
         os.mkdir(fullPath)
@@ -179,11 +179,11 @@ def validateCommandsList(argv:list) -> dict:
     return commandsDict
     
 def createmModule(fileName):
-    with open("../../app/lib/modules/" + fileName, "r") as file:
+    with open("..\\..\\app\\lib\\modules\\" + fileName, "r") as file:
         map = getFlagsWithDefValue(file)
         filename = file.name.removesuffix(".dart")
-        filename = filename.removeprefix("../../app/lib/modules/")
-        moduleDirPath = resourcesDirPath + "/" + filename + "_module/"
+        filename = filename.removeprefix("..\\..\\app\lib\\modules\\")
+        moduleDirPath = resourcesDirPath + "\\" + filename + "_module\\"
         createModuleDir(resourcesDirPath, filename + "_module")
         file.close()
 
@@ -210,7 +210,7 @@ def validateCommandCombination(commandDict:dict) -> bool:
 
 def validateFileName(argument:str) -> bool:
     try:
-        file = open("../../app/lib/modules/" + argument, "r")
+        file = open("..\\..\\app\\lib\\modules\\" + argument, "r")
     except OSError:
         print ("No such file")
     else: 
@@ -227,10 +227,10 @@ preprocessedLines = []
 filename = ""
 validatedCommandsDict = {}
 resourcesDirPath = os.getcwd()
-resourcesDirPath = resourcesDirPath.removesuffix("/preprocessor") + "/resources"
+resourcesDirPath = resourcesDirPath.removesuffix("\preprocessor") + "\resources"
 map = {}
 
-if validateCommandsEntered(sys.argv):
+if validateCommandsEntered(sys.argv):  
     validatedCommandsDict = validateCommandsList(sys.argv)
     if validatedCommandsDict != False:
         print(list(validatedCommandsDict.values()))
@@ -239,7 +239,7 @@ if validateCommandsEntered(sys.argv):
                 filename = list(validatedCommandsDict.keys())[0]
                 createmModule(filename)
         elif list(validatedCommandsDict.values())[0] == "--parseall":
-            path = "../../app/lib/modules"
+            path = "..\..\app\lib\modules"
             for _,_,files in os.walk(path):
                 print(files)
                 for i in range(len(files)):
